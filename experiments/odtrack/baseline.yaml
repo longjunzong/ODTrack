@@ -12,17 +12,17 @@ DATA:
     CENTER_JITTER: 4.5
     FACTOR: 5.0
     SCALE_JITTER: 0.5
-    SIZE: 384
-    NUMBER: 2
+    SIZE: 384         #指定输入search-region尺寸
+    NUMBER: 2         #指定在训练过程中，一次性训练几个batch
   TEMPLATE:
     CENTER_JITTER: 0
     FACTOR: 2.0
     SCALE_JITTER: 0
-    SIZE: 192
-    NUMBER: 3
+    SIZE: 192        #指定输入search-region尺寸
+    NUMBER: 3        #指定在跟踪过程中使用多少个模板（原文中ref clip中帧数），因为涉及动态模板
 
   TRAIN:
-    DATASETS_NAME:
+    DATASETS_NAME:   
     - LASOT
     - GOT10K_vottrain
     - COCO17
@@ -46,14 +46,14 @@ MODEL:
   BACKBONE:
     TYPE: vit_base_patch16_224_ce
     STRIDE: 16
-    CE_LOC: [3, 6, 9]
+    CE_LOC: [3, 6, 9]               #在第3，6，9层encoder之后加上CE层
     CE_KEEP_RATIO: [0.7, 0.7, 0.7]
     CE_TEMPLATE_RANGE: 'CTR_POINT'  # choose between ALL, CTR_POINT, CTR_REC, GT_BOX
     ADD_CLS_TOKEN: True             # use track_query mechanism
     ATTN_TYPE: concat               # Choose from [concat, separate]
   HEAD:
     TYPE: CENTER
-    NUM_CHANNELS: 256
+    NUM_CHANNELS: 256               # 在预测头中，因为有很多卷积层，确定中间卷积层的输出维度
 
 TRAIN:
   BBOX_TASK: True
@@ -81,5 +81,5 @@ TEST:
   SEARCH_SIZE: 384
   TEMPLATE_FACTOR: 2.0
   TEMPLATE_SIZE: 192
-  TEMPLATE_NUMBER: 3
+  TEMPLATE_NUMBER: 3              #作为模板的ref clips包括三帧
   MEMORY_THRESHOLD: 1000

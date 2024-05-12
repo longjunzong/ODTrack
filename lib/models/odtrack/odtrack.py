@@ -51,14 +51,16 @@ class ODTrack(nn.Module):
             x, aux_dict = self.backbone(z=template.copy(), x=search[i],
                                         ce_template_mask=ce_template_mask, ce_keep_rate=ce_keep_rate,
                                         return_last_attn=return_last_attn, track_query=self.track_query, token_len=self.token_len)
+            # x的shape是(8,1009,768) 第一个token是一个时间query，之后跟着的432是三张模板(12*12*3),最后576是1张搜索区域
             feat_last = x
             if isinstance(x, list):
                 feat_last = x[-1]
-                
+            # self.feat_len_s=576(24*24) 而24=384/16 
             enc_opt = feat_last[:, -self.feat_len_s:]  # encoder output for the search region (B, HW, C)
             if self.backbone.add_cls_token:
                 self.track_query = (x[:, :self.token_len].clone()).detach() # stop grad  (B, N, C)
-                
+
+            # 得出搜索区域的token和时间query的attention相似度，然后用那个相似度增强视觉特征    
             att = torch.matmul(enc_opt, x[:, :1].transpose(1, 2))  # (B, HW, N)
             opt = (enc_opt.unsqueeze(-1) * att.unsqueeze(-2)).permute((0, 3, 2, 1)).contiguous()  # (B, HW, C, N) --> (B, N, C, HW)
             

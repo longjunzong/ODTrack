@@ -52,6 +52,7 @@ class ODTrackActor(BaseActor):
         ce_keep_rate = None
         if self.cfg.MODEL.BACKBONE.CE_LOC:
             for i in range(self.settings.num_template):
+                # 产生掩码，这个掩码就是特征图的中心部分设为1，边缘部分设为0，然后把掩码拉平
                 box_mask_z.append(generate_mask_cond(self.cfg, template_list[i].shape[0], template_list[i].device,
                                                     data['template_anno'][i]))
             box_mask_z = torch.cat(box_mask_z, dim=1)

@@ -48,6 +48,7 @@ def run(settings):
     # Build dataloaders
     loader_train, loader_val = build_dataloaders(cfg, settings)
 
+    # cfg.MODEL.BACKBONE.TYPE=vit_base_patch16_224_ce
     if "RepVGG" in cfg.MODEL.BACKBONE.TYPE or "swin" in cfg.MODEL.BACKBONE.TYPE or "LightTrack" in cfg.MODEL.BACKBONE.TYPE:
         cfg.ckpt_dir = settings.save_dir
 

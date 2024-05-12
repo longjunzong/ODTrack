@@ -28,7 +28,7 @@ class LTRTrainer(BaseTrainer):
         """
         super().__init__(actor, loaders, optimizer, settings, lr_scheduler)
 
-        self._set_default_settings()
+        self._set_default_settings() #不知道有什么用，因为根本没有返回值，也没有给self赋值
 
         # Initialize statistics variables
         self.stats = OrderedDict({loader.name: None for loader in self.loaders})

@@ -23,7 +23,7 @@ cfg.MODEL.BACKBONE.SEP_SEG = False
 cfg.MODEL.BACKBONE.CAT_MODE = 'direct'
 cfg.MODEL.BACKBONE.MERGE_LAYER = 0
 cfg.MODEL.BACKBONE.ADD_CLS_TOKEN = False
-cfg.MODEL.BACKBONE.TOKEN_LEN = 1
+cfg.MODEL.BACKBONE.TOKEN_LEN = 1  #用于指定在网络过程传递时间query时，用于传递时间信息的query的数量，原文中是用一个query来传，所以是1
 cfg.MODEL.BACKBONE.CLS_TOKEN_USE_MODE = 'ignore'
 cfg.MODEL.BACKBONE.ATTN_TYPE = 'concat'
 
@@ -67,7 +67,7 @@ cfg.TRAIN.SCHEDULER.DECAY_RATE = 0.1
 
 # DATA
 cfg.DATA = edict()
-cfg.DATA.SAMPLER_MODE = "causal"  # sampling methods
+cfg.DATA.SAMPLER_MODE = "causal"  # 采样方式
 cfg.DATA.MEAN = [0.485, 0.456, 0.406]
 cfg.DATA.STD = [0.229, 0.224, 0.225]
 cfg.DATA.MAX_SAMPLE_INTERVAL = 200

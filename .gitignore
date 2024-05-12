@@ -1,0 +1,6 @@
+.vscode/
+__pycache__/
+mytest.py
+output/
+tensorboard/
+pretrained_networks/

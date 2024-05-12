@@ -116,8 +116,8 @@ class CenterPredictor(nn.Module, ):
     def __init__(self, inplanes=64, channel=256, feat_sz=20, stride=16, freeze_bn=False):
         super(CenterPredictor, self).__init__()
         self.input_dim = channel
-        self.feat_sz = feat_sz
-        self.stride = stride
+        self.feat_sz = feat_sz #输入的特征图尺寸
+        self.stride = stride   #相比原图的缩放比例
         self.img_sz = self.feat_sz * self.stride
 
         # corner predict

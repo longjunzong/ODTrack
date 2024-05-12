@@ -1,6 +1,6 @@
 # [AAAI'2024] - ODTrack
 
-The official implementation for the **AAAI 2024** paper \[ [_ODTrack: Online Dense Temporal Token Learning for Visual Tracking_](https://arxiv.org/xxx) \].
+The official implementation for the **AAAI 2024** paper \[[_ODTrack: Online Dense Temporal Token Learning for Visual Tracking_](https://arxiv.org/abs/2401.01686)\].
 
 [[Models](https://drive.google.com/drive/folders/17LacrfRO01R75bxU4bgA87eo1b_rX5Gj?usp=sharing)], [[Raw Results](https://drive.google.com/drive/folders/10I7aHb2J4SFTMuQ_LN33VbaiykD_M2hi?usp=sharing)], [[Training logs](https://drive.google.com/drive/folders/1BXnYmnGnSZIA0IR_gwdlDczl0ex4DgFF?usp=sharing)]
 
@@ -142,9 +142,9 @@ python tracking/profile_model.py --script odtrack --config baseline
 If our work is useful for your research, please consider citing:
 
 ```Bibtex
-@inproceedings{odtrack,
-  title={ODTrack: Online Dense Temporal Token Learning for Visual Tracking},
-  author={Yaozong Zheng, Bineng Zhong, Qihua Liang, Zhiyi Mo, Shengping Zhang, Xianxian Li},
+@inproceedings{zheng2024odtrack,
+  title={ODTrack: Online Dense Temporal Token Learning for Visual Tracking}, 
+  author={Yaozong Zheng and Bineng Zhong and Qihua Liang and Zhiyi Mo and Shengping Zhang and Xianxian Li},
   booktitle={AAAI},
   year={2024}
 }
